@@ -30,7 +30,7 @@ class Database implements DatabaseInterface
       $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->_connection = $connection;
     } catch (Exception $e) {
-      echo "Connection failed" . $e->getMessage();
+      echo "Connection failed " . $e->getMessage();
     }
   }
 
