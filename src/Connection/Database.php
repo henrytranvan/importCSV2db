@@ -16,13 +16,6 @@ class Database implements DatabaseInterface
   private $_connection;
 
   /**
-   * @var string
-   *
-   * Store connection error message.
-   */
-  private $_error;
-
-  /**
    * Database constructor.
    *
    * @param string $host
@@ -37,7 +30,7 @@ class Database implements DatabaseInterface
       $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->_connection = $connection;
     } catch (Exception $e) {
-      $this->_error =  "Connection failed" . $e->getMessage();
+      echo "Connection failed" . $e->getMessage();
     }
   }
 
@@ -49,10 +42,6 @@ class Database implements DatabaseInterface
   public function getConnection()
   {
     return $this->_connection;
-  }
-
-  public function getErrorMessage () {
-    return $this->_error;
   }
 
 }
