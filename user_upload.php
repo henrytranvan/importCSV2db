@@ -21,12 +21,15 @@ if (isset($args['h']) && isset($args['d']) && isset($args['u']) && isset($args['
 if (isset($args['help'])) {
     HelpView::help();
 }
+// Create users table command, no further action.
 elseif (isset($args['create_table']) && $import_controller) {
     $messages = $import_controller->createTable();
     $import_view->output($messages);
+// Dry run command, don't insert data into database.
 } else if (isset($args['dry_run'])  && isset($args['file']) && $import_controller) {
     $messages = $import_controller->importData($args['file'], TRUE);
     $import_view->output($messages);
+// Implement insert data from file to database.
 } else if (isset($args['file']) && $import_view) {
     $messages = $import_controller->importData($args['file'], FALSE);
     $import_view->output($messages);
