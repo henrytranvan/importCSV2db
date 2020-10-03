@@ -67,7 +67,7 @@ class UserModel extends Model {
     $rows = 1;
     $completed = 0;
     $uncompleted = 0;
-    try {
+    if (file_exists($filePath)) {
         if (($fileHandler = fopen($filePath, "r")) !== FALSE) {
             $sql = "INSERT INTO `users`(`name`, `surname`, `email`) VALUES (:name, :surname, :email)";
             $statement = $this->_db->getConnection()->prepare($sql);
@@ -126,8 +126,8 @@ class UserModel extends Model {
             fclose($fileHandler);
         }
     }
-    catch (Exception $e) {
-        $messages['error'][] = sprintf("%s!", $e->getMessage());
+    else {
+        $messages['error'][] = sprintf("File %s doesn't exist!!", $filePath);
     }
     return $messages;
   }
