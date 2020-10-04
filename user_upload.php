@@ -14,7 +14,7 @@ if (isset($args['h']) && isset($args['d']) && isset($args['u']) && isset($args['
     if ($database) {
         $user_model = new UserModel($database);
         $import_controller = new ImportController($user_model);
-        $import_view = new ImportView($import_controller, $user_model);
+        $import_view = new ImportView();
     }
 }
 // Help command.
