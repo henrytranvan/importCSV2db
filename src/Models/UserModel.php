@@ -2,7 +2,6 @@
 
 namespace ImportUser\Csv\Models;
 
-use Exception;
 use PDO;
 use PDOException;
 
